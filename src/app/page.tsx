@@ -6,7 +6,7 @@ const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: "Mint an NFT on Aptos",
+      label: "Let's start",
       action: "post",
     },
   ],
