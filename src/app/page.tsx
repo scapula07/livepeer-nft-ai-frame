@@ -14,9 +14,6 @@ const frameMetadata = getFrameMetadata({
     src: `${NEXT_PUBLIC_URL}/default.png`,
     aspectRatio: "1:1",
   },
-  input: {
-    text: "Enter your Aptos Wallet Address",
-  },
   postUrl: `${NEXT_PUBLIC_URL}/api/prompt`,
 });
 
