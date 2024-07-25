@@ -24,20 +24,21 @@ import { SDAPI } from "@/app/lib";
 
             <meta property="fc:frame" content="vNext">
             <meta property="fc:frame:image" content=${result?.outputs[0]?.url}>
+            <meta name="fc:frame:image:aspect_ratio" content="1.91:1" />
             <meta property="og:image" content=${result?.outputs[0]?.url}>
-            <meta name="fc:frame:post_url" content=${NEXT_PUBLIC_URL}/api/transaction?uri=${result?.outputs[0]?.url} />
+            <meta name="fc:frame:button:1:post_url" content=${NEXT_PUBLIC_URL}/api/prompt />
             <meta name="fc:frame:button:1" content="Regenerate" />
             <meta name="fc:frame:button:2" content="Transaction"/>
             <meta name="fc:frame:button:2:action" content="tx" />
-              <meta
-                name="fc:frame:button:2:target"
-                content="https://frame.example.com/get_tx_data"
-            />
             <meta
-                property="fc:frame:button:2:post_url"
-                content=${NEXT_PUBLIC_URL}/api/share?uri=${result?.outputs[0]?.url}
-              />
-        `
+              name="fc:frame:button:2:target"
+              content=${NEXT_PUBLIC_URL}/api/transaction?uri=${result?.outputs[0]?.url}
+           />
+           <meta
+              property="fc:frame:button:2:post_url"
+              content=${NEXT_PUBLIC_URL}/api/mint?uri=${result?.outputs[0]?.url}
+            />
+      `
            
         )     
      }catch(e){

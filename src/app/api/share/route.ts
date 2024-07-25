@@ -18,8 +18,8 @@ import {
         return new NextResponse(
             getFrameHtmlResponse({
                 image: {
-                  src:`${NEXT_PUBLIC_URL}/background.png`,
-                  aspectRatio: "1.91:1",
+                  src:uri,
+                  aspectRatio: "1:1",
                 },
                 buttons: [
                   {
