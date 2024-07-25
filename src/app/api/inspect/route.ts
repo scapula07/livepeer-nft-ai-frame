@@ -25,13 +25,15 @@ import { SDAPI } from "@/app/lib";
             <meta property="fc:frame" content="vNext">
             <meta property="fc:frame:image" content=${result?.outputs[0]?.url}>
             <meta property="og:image" content=${result?.outputs[0]?.url}>
-            <meta name="fc:frame:button:1" content="Mint" />
-            <meta name="fc:frame:button:1:action" content="mint" />
+            <meta name="fc:frame:post_url" content=${NEXT_PUBLIC_URL}/api/prompt />
+            <meta name="fc:frame:button:1" content="Regenerate" />
+            <meta name="fc:frame:button:2" content="Mint" />
+            <meta name="fc:frame:button:2:action" content="mint" />
             <meta
-              name="fc:frame:button:1:target"
+              name="fc:frame:button:2:target"
               content="eip155:8453:0xf5a3b6dee033ae5025e4332695931cadeb7f4d2b:1"
-            />
-     `
+           />
+      `
            
         )     
      }catch(e){
