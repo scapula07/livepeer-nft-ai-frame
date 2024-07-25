@@ -4,7 +4,7 @@ import {
     getFrameHtmlResponse,
   } from "@coinbase/onchainkit";
   import { NextRequest, NextResponse } from "next/server";
-import { SDAPI } from "@/app/lib";
+
 
 
   export async function POST(req: NextRequest): Promise<Response> {
@@ -12,32 +12,36 @@ import { SDAPI } from "@/app/lib";
     const body: FrameRequest = await req.json(); 
    
     const { inputText,buttonIndex }=body?.untrustedData
-
-    const api= new SDAPI()
-    const result = await api.txt2img(inputText || "");
-    console.log(result,"ress")
+    const url = new URL(req.url)
+    const uri = url.searchParams.get("uri") || ""
+    console.log(uri,"share")
 
     try{          
         return new NextResponse(
             getFrameHtmlResponse({
                 image: {
-                  src:result?.outputs[0]?.url,
+                  src:uri,
                   aspectRatio: "1.91:1",
                 },
                 buttons: [
                   {
-                    label:"Regenerate",
-                    action:'post',
-                    target:`${NEXT_PUBLIC_URL}/api/prompt`
+                    label:"X.com",
+                    action:'link',
+                    target:`https://twitter.com/intent/tweet?url=${uri}`
                   },
                   {
-                      label:"Mint",
-                      action:'post',
-                      target:`${NEXT_PUBLIC_URL}/api/mint?uri=${result?.outputs[0]?.url}`
+                      label:"Recast",
+                      action:'link',
+                      target:`https://warpcast.com/~/compose?embeds[]=${uri}`
                   },
+                  {
+                    label:"Discord",
+                    action:'link',
+                    target:``
+                },
     
                 ],
-                postUrl: `${NEXT_PUBLIC_URL}/api/mint?uri=${result?.outputs[0]?.url}`,
+        
               })
         )     
      }catch(e){

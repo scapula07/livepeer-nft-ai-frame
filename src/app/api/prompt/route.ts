@@ -11,7 +11,9 @@ import {
     return new NextResponse(
         getFrameHtmlResponse({
             image: {
-              src: `${NEXT_PUBLIC_URL}/background4.jpeg`,
+              src: `${NEXT_PUBLIC_URL}/background4.jpeg`,  
+              aspectRatio: "1.91:1",
+
             },
             buttons: [
               {
