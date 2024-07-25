@@ -10,11 +10,9 @@ import {
   export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
     const body: FrameRequest = await req.json(); 
-   
-    const { inputText,buttonIndex }=body?.untrustedData
     const url = new URL(req.url)
     const uri = url.searchParams.get("uri") || ""
-    console.log(uri,"share")
+
 
     try{          
         return new NextResponse(

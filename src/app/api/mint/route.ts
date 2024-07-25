@@ -4,14 +4,16 @@ import {
     getFrameHtmlResponse,
   } from "@coinbase/onchainkit";
   import { NextRequest, NextResponse } from "next/server";
-
+import { getConnectedAddressForUser } from "@/app/utils/mint";
   export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL; 
     const url = new URL(req.url)
     const uri = url.searchParams.get("uri")
-
     const body: FrameRequest = await req.json(); 
-    console.log(body,uri,"bb")
+    const { buttonIndex,fid }=body?.untrustedData
+    // const address = await getConnectedAddressForUser(fid);
+
+    // console.log(address,"addd")
       try{
         return new NextResponse(
           getFrameHtmlResponse({
@@ -23,7 +25,7 @@ import {
                 {
                     label:"Share",
                     action:'post',
-                    target:`${NEXT_PUBLIC_URL}/api/mint`
+                    target:`${NEXT_PUBLIC_URL}/api/share?uri=${uri}`
                 },
                ],
                 postUrl: `${NEXT_PUBLIC_URL}/api/share?uri=${uri}`,

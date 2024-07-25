@@ -11,12 +11,10 @@ import { SDAPI } from "@/app/lib";
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
     const body: FrameRequest = await req.json(); 
    
-    const { inputText,buttonIndex }=body?.untrustedData
+    const { inputText}=body?.untrustedData
 
     const api= new SDAPI()
     const result = await api.txt2img(inputText || "");
-    console.log(result,"ress")
-
     try{          
         return new NextResponse(
             getFrameHtmlResponse({
