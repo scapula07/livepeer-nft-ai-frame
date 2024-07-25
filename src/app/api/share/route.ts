@@ -19,7 +19,7 @@ import {
             getFrameHtmlResponse({
                 image: {
                   src:uri,
-                  aspectRatio: "1:1",
+                  aspectRatio: "1.91:1",
                 },
                 buttons: [
                   {
