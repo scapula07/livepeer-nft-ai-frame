@@ -18,7 +18,7 @@ import {
         return new NextResponse(
             getFrameHtmlResponse({
                 image: {
-                  src:uri,
+                  src:`${NEXT_PUBLIC_URL}/background.png`,
                   aspectRatio: "1.91:1",
                 },
                 buttons: [
@@ -32,11 +32,7 @@ import {
                       action:'link',
                       target:`https://warpcast.com/~/compose?embeds[]=${uri}`
                   },
-                  {
-                    label:"Discord",
-                    action:'link',
-                    target:``
-                },
+                 
     
                 ],
         

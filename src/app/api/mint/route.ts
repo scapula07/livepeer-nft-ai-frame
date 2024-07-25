@@ -11,9 +11,10 @@ import { getConnectedAddressForUser } from "@/app/utils/mint";
     const uri = url.searchParams.get("uri")
     const body: FrameRequest = await req.json(); 
     const { buttonIndex,fid }=body?.untrustedData
-    // const address = await getConnectedAddressForUser(fid);
+    console.log(fid,buttonIndex)
+    const address = await getConnectedAddressForUser(fid);
 
-    // console.log(address,"addd")
+    console.log(address,fid,"addd")
       try{
         return new NextResponse(
           getFrameHtmlResponse({

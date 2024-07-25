@@ -29,5 +29,5 @@ export const getConnectedAddressForUser = async (fid: number) => {
   const res = await fetch(`https://hub.pinata.cloud/v1/verificationsByFid?fid=${fid}`)
   const json = await res.json();
 
-  return json.messages.map((m: any) => m.data.verificationAddAddressBody.address)
+  return json
 }

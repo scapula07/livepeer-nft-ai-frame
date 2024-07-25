@@ -17,26 +17,22 @@ import { SDAPI } from "@/app/lib";
     const result = await api.txt2img(inputText || "");
     try{          
         return new NextResponse(
-            getFrameHtmlResponse({
-                image: {
-                  src:result?.outputs[0]?.url,
-                  aspectRatio: "1.91:1",
-                },
-                buttons: [
-                  {
-                    label:"Regenerate",
-                    action:'post',
-                    target:`${NEXT_PUBLIC_URL}/api/prompt`
-                  },
-                  {
-                      label:"Mint",
-                      action:'post',
-                      target:`${NEXT_PUBLIC_URL}/api/mint?uri=${result?.outputs[0]?.url}`
-                  },
-    
-                ],
-                postUrl: `${NEXT_PUBLIC_URL}/api/mint?uri=${result?.outputs[0]?.url}`,
-              })
+          `
+            <!doctype html>
+
+            <title>Frame 2</title>
+
+            <meta property="fc:frame" content="vNext">
+            <meta property="fc:frame:image" content=${result?.outputs[0]?.url}>
+            <meta property="og:image" content=${result?.outputs[0]?.url}>
+            <meta name="fc:frame:button:1" content="Mint" />
+            <meta name="fc:frame:button:1:action" content="mint" />
+            <meta
+              name="fc:frame:button:1:target"
+              content="eip155:8453:0xf5a3b6dee033ae5025e4332695931cadeb7f4d2b:1"
+            />
+     `
+           
         )     
      }catch(e){
         console.log(e)
