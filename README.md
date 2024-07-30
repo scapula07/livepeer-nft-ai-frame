@@ -60,7 +60,11 @@ yarn dev
 2. Deployment- deploy on vercel or any platform that support nextjs
 3. Configure environmental variables
    ```
-      NEXT_PUBLIC_URL=
-
+       NEXT_PUBLIC_URL=
 
    ```
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+
