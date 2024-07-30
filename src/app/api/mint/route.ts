@@ -7,9 +7,8 @@ import {
   export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL; 
     const url = new URL(req.url)
-    const uri = url.searchParams.get("uri")
+    const uri = url.searchParams.get("uri") as string
     const body: FrameRequest = await req.json(); 
-    const { buttonIndex,fid }=body?.untrustedData
       try{
         return new NextResponse(
           getFrameHtmlResponse({

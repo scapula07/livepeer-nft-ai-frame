@@ -5,7 +5,7 @@ export class SDAPI {
     public async txt2img(prompt: string): Promise<GenerationOutput> {
         const url = 'https://dream-gateway.livepeer.cloud/text-to-image';
         const body:Txt2imgInput = {
-            model_id:"SG161222/RealVisXL_V4.0_Lightning",
+            model_id:process.env.MODEL_ID as string,
             prompt:prompt,
             guidance_scale: 2,
             width: 1024 ,
@@ -24,9 +24,7 @@ export class SDAPI {
                 },
                 timeout: 40000
               });
-              const data = response.data;
-              console.log(data,"data")
-              
+              const data = response.data;     
               if (data && data.images) {
                 return {
                   id: data.id,

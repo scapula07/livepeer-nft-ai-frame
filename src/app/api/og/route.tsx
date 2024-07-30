@@ -7,8 +7,8 @@ export async function GET(request: Request) {
     try{
         const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
         const { searchParams } = new URL(request.url,NEXT_PUBLIC_URL);
-        const uri = searchParams.get('uri') || "";
-        const text = searchParams.get('text')||"";
+        const uri = searchParams.get('uri') as string;
+        const text = searchParams.get('text') as string;
       
         const fontData = await fetch(
             new URL('../../../fonts/Oswald-Bold.ttf', import.meta.url)
@@ -28,14 +28,14 @@ export async function GET(request: Request) {
                     }}
               >
                 <img
-                  src={uri}
-                  alt="Image"
-                  style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
+                    src={uri}
+                    alt="Image"
+                    style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                    }}
                 />
                  <p
                     style={{

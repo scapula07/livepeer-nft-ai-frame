@@ -3,17 +3,18 @@ import {
     getFrameMessage,
     getFrameHtmlResponse,
   } from "@coinbase/onchainkit";
-  import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { SDAPI } from "@/app/lib";
 
-  export async function POST(req: NextRequest): Promise<Response> {
+
+export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
     const body: FrameRequest = await req.json(); 
    
-    const { inputText}=body?.untrustedData
+    const {inputText}=body?.untrustedData
 
     const api= new SDAPI()
-    const result = await api.txt2img(inputText || "");
+    const result = await api.txt2img(inputText as string);
 
 
     return new NextResponse(
@@ -40,8 +41,7 @@ import { SDAPI } from "@/app/lib";
             input: {
                 text: "Your caption...",
               },
-              // postUrl: `${NEXT_PUBLIC_URL}/api/inspect`,
-          })
+           })
     )
 
   }

@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-    FrameRequest,
-    getFrameMessage,
-    getFrameHtmlResponse,
-  } from "@coinbase/onchainkit";
-  import { ethers } from 'ethers';
+import { ethers } from 'ethers';
 import { abi } from "@/app/utils/abi";
 
 
@@ -17,18 +12,17 @@ export async function POST(req: NextRequest): Promise<Response> {
         const body= await req.json();  
         const url = new URL(req.url)
         
-        const uri = url.searchParams.get("uri")
-        console.log(url,uri,"url")
+        const uri = url.searchParams.get("uri") as string
         const tokenId= getRandomInt(1, 1000);
         const contractInterface = new ethers.Interface(abi);
         const data = contractInterface.encodeFunctionData("safeMint", [tokenId,uri]);
 
         const txActionResponse = {
-          method: "eth_sendTransaction",
-          chainId: "eip155:421614", 
+          method:"eth_sendTransaction",
+          chainId:process.env.CHAIN_ID, 
           params: {
             abi:abi,
-            to: "0xc707E384871fF5c253dECe60DbaDDd6812f2bE8e",
+            to:process.env.CONTRACT_ADDRESS,
             data,
           },
         };
