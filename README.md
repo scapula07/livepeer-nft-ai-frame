@@ -59,14 +59,14 @@ yarn dev
 ```
 2. Deployment- deploy on vercel or any platform that support nextjs
 3. Configure environmental variables
-   ```
+```
      
    NEXT_PUBLIC_URL=https://ed50-2a09-bac5-4deb-1c82-00-2d7-10.ngrok-free.app
    CONTRACT_ADDRESS=0xc707E384871fF5c253dECe60DbaDDd6812f2bE8e
    CHAIN_ID=eip155:421614 // Arbitrum Eip id 
    MODEL_ID=SG161222/RealVisXL_V4.0_Lightning // AI model for text-image
 
-   ```
+```
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
