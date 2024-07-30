@@ -18,11 +18,11 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: "Mint an NFT ",
-  description: "Mint an NFT",
+  title: "Mint an NFT with Livepeer AI",
+  description: "A frame for generating meme and mint as  NFT",
   openGraph: {
-    title: "Mint an NFT ",
-    description: "Enter your Aptos Wallet address to Mint an NFT on Aptos",
+    title: "Mint an NFT with Livepeer AI",
+    description: "A frame for generating meme and mint as  NFT ",
     images: [`${NEXT_PUBLIC_URL}/default.png`],
   },
   other: {
