@@ -30,18 +30,23 @@ export async function GET(request: Request) {
                     objectFit: 'cover',
                   }}
                 />
-                <div
-                  style={{
-                    position: 'absolute',
-                    color: 'white',
-                    fontSize: '48px',
-                    fontWeight: '800',
-                    textAlign: 'center',
-                    padding: '0 20px',
-                  }}
-                >
-                  {text}
-                </div>
+                 <p
+                    style={{
+                        position: 'absolute',
+                        margin: 0,
+                        paddingBottom: 20,
+                        color: '#ffffff',
+                        lineHeight: 1,
+                        fontSize: 100,
+                        fontFamily: '"Oswald Bold"',
+                        textAlign: 'center',
+                        textTransform: 'uppercase',
+                        textShadow:
+                        '5px 5px 3px #000, -5px 5px 3px #000, -5px -5px 0 #000, 5px -5px 0 #000',
+                    }}
+                    >
+                    {text}
+                    </p>
               </div>
         
             ),
