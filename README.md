@@ -1,7 +1,6 @@
-# Livepeer Farcaster frame for miniting AI NFT Memes
-# Farcaster Meme Generator Project
+# Livepeer Farcaster frame for miniting AI NFT Memes(Meme Generator)
 
-This project is a Farcaster application built using Next.js, plain HTML, TypeScript, Vercel/og for generating meme images, and onchainkit. The application allows users to create meme images using the text-to-image API of the Livepeer AI subnet and mint them as NFTs on the Arbitrum chain with an ERC-721 smart contract.
+This project is a Farcaster application built using Next.js, plain HTML, Farcaster frame meta tag, TypeScript, Vercel/og for generating meme images, and Coinbase onchainkit. The application allows users to create meme images using the text-to-image API of the Livepeer AI subnet and mint them as NFTs on the Arbitrum chain with an ERC-721 smart contract.
 
 ## Table of Contents
 
@@ -18,7 +17,7 @@ This project is a Farcaster application built using Next.js, plain HTML, TypeScr
 
 - **Generate Meme Images**: Create meme images using text input and the text-to-image API from the Livepeer AI subnet.
 - **Integration with Farcaster**: Share created memes directly on the Farcaster social network.
-- **Onchainkit Integration**: Utilize onchainkit for blockchain-related functionalities.
+- **Onchainkit Integration**: Utilize onchainkit for frame metadata.
 - **Mint NFTs**: Mint generated meme images as NFTs on the Arbitrum chain using an ERC-721 smart contract.
 - **Responsive Design**: Works on both desktop and mobile devices.
 
@@ -26,9 +25,9 @@ This project is a Farcaster application built using Next.js, plain HTML, TypeScr
 
 - **Next.js**: A React framework for server-side rendering and static site generation.
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
-- **Plain HTML**: Simple HTML tags for structuring the content.
+- **Plain HTML Meta tags(Farcaster frame specifications)**: Meta tags for rendering frame images on Farcaster.
 - **Vercel/og**: Used for generating open graph images dynamically.
-- **onchainkit**: A toolkit for integrating blockchain functionalities.
+- **onchainkit**: A toolkit for frame metadata.
 - **Livepeer AI Subnet**: Utilized for generating images via its text-to-image API.
 - **Arbitrum**: Layer 2 scaling solution for Ethereum, used for minting NFTs.
 
@@ -63,6 +62,7 @@ pnpm dev
 # or
 bun dev
 ```
+2. Deployment
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
