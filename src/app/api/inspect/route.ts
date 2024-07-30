@@ -1,19 +1,14 @@
-import {
-    FrameRequest,
-    getFrameMessage,
-    getFrameHtmlResponse,
-  } from "@coinbase/onchainkit";
-  import { NextRequest, NextResponse } from "next/server";
-import { SDAPI } from "@/app/lib";
-import {generateBase64PriceImage} from "../../utils/generateimage"
+import {FrameRequest} from "@coinbase/onchainkit";
+import { NextRequest, NextResponse } from "next/server";
 
-  export async function POST(req: NextRequest): Promise<Response> {
+
+export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
     const body: FrameRequest = await req.json();    
     const { inputText}=body?.untrustedData
-
     const url = new URL(req.url)
     const uri = url.searchParams.get("uri") || ""
+    
     try{          
         return new NextResponse(
           `
@@ -36,7 +31,7 @@ import {generateBase64PriceImage} from "../../utils/generateimage"
             <meta name="fc:frame:button:2:action" content="tx" />
             <meta
               name="fc:frame:button:2:target"
-              content=${NEXT_PUBLIC_URL}/api/transaction?uri=${uri}
+              content=${NEXT_PUBLIC_URL}/api/transaction?uri=${uri}&text=${inputText}  
            />
            <meta
               property="fc:frame:button:2:post_url"

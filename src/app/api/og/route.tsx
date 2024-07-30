@@ -1,24 +1,31 @@
 import { ImageResponse } from 'next/og';
 export const runtime = 'edge'
  
+
 export async function GET(request: Request) {
+     
     try{
         const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
         const { searchParams } = new URL(request.url,NEXT_PUBLIC_URL);
         const uri = searchParams.get('uri') || "";
         const text = searchParams.get('text')||"";
-        console.log(uri,text)
+      
+        const fontData = await fetch(
+            new URL('../../../fonts/Oswald-Bold.ttf', import.meta.url)
+          ).then((res) => res.arrayBuffer())
         return new ImageResponse(
             (
-              <div
-                style={{
-                  position: 'relative',
-                  width: '1200px',
-                  height: '630px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
+                <div
+                    style={{
+                        display: 'flex',
+                        background: '#f6f6f6',
+                        width: '100%',
+                        height: '100%',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        position: 'relative',
+                    }}
               >
                 <img
                   src={uri}
@@ -53,6 +60,13 @@ export async function GET(request: Request) {
             {
               width: 1200,
               height: 630,
+              fonts: [
+                {
+                  name:'Oswald Bold',
+                  data: fontData,
+                  style: 'normal',
+                },
+              ],
             },
           );
     }catch(e){
