@@ -10,7 +10,7 @@ import {
   export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
     const body: FrameRequest = await req.json(); 
-    const url = new URL(req.url)
+    const url = new URL(req.url,NEXT_PUBLIC_URL )
     const uri = url.searchParams.get("uri") || ""
 
 

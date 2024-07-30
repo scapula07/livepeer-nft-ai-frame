@@ -25,7 +25,7 @@ import {
             input: {
                 text: "A cool cow on the beach...",
               },
-              postUrl: `${NEXT_PUBLIC_URL}/api/inspect`,
+              postUrl: `${NEXT_PUBLIC_URL}/api/caption`,
           })
     )
 
