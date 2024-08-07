@@ -26,18 +26,17 @@ export async function POST(req: NextRequest): Promise<Response> {
             },
             buttons: [
               {
+                label:"Regenerate",
+                action:"post",
+                target:`${NEXT_PUBLIC_URL}/api/prompt`
+              },
+              {
                 label:"Add caption",
                 action:"post",
                 target:`${NEXT_PUBLIC_URL}/api/inspect?uri=${result?.outputs[0]?.url}`
 
-              },
-              {
-                label:"Skip",
-                action:"post",
-                target:`${NEXT_PUBLIC_URL}/api/inspect?uri=${result?.outputs[0]?.url}`
-              },
-
-            ],
+              }
+             ],
             input: {
                 text: "Your caption...",
               },
