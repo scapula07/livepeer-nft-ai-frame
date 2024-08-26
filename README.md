@@ -65,6 +65,8 @@ yarn dev
    CONTRACT_ADDRESS=0xc707E384871fF5c253dECe60DbaDDd6812f2bE8e
    CHAIN_ID=eip155:421614 // Arbitrum Eip id 
    MODEL_ID=SG161222/RealVisXL_V4.0_Lightning // AI model for text-image
+   API_KEY=
+   API_SECRET= // PINATA API KEYS
 
 ```
 
