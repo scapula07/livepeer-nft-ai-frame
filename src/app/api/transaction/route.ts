@@ -11,13 +11,11 @@ export async function POST(req: NextRequest): Promise<Response> {
     try {
         const body= await req.json();  
         const url = new URL(req.url)
-        
         const uri = url.searchParams.get("uri") as string
-    
         const tokenId= getRandomInt(1, 1000);
         const contractInterface = new ethers.Interface(abi);
         const data = contractInterface.encodeFunctionData("safeMint", [tokenId,uri]);
-
+        
         const txActionResponse = {
           method:"eth_sendTransaction",
           chainId:process.env.CHAIN_ID, 
@@ -27,7 +25,6 @@ export async function POST(req: NextRequest): Promise<Response> {
             data,
           },
         };
-    
         return new NextResponse(JSON.stringify(txActionResponse), { status: 200 });
       } catch (error) {
         console.error('Error processing transaction request:', error);

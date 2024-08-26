@@ -9,10 +9,10 @@ export async function GET(request: Request) {
         const { searchParams } = new URL(request.url,NEXT_PUBLIC_URL);
         const uri = searchParams.get('uri') as string;
         const text = searchParams.get('text') as string;
-      
         const fontData = await fetch(
             new URL('../../../fonts/Oswald-Bold.ttf', import.meta.url)
           ).then((res) => res.arrayBuffer())
+         const fontSize= text?.length >20? 50:100
         return new ImageResponse(
             (
                 <div
@@ -44,7 +44,7 @@ export async function GET(request: Request) {
                         paddingBottom: 20,
                         color: '#ffffff',
                         lineHeight: 1,
-                        fontSize: 100,
+                        fontSize:fontSize,
                         fontFamily: '"Oswald Bold"',
                         textAlign: 'center',
                         textTransform: 'uppercase',

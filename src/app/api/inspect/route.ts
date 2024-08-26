@@ -6,12 +6,12 @@ import axios from "axios";
 
 
 const queue:any = [];
-
+var hash:string=""
 const processQueue = async () => {
   while (queue.length > 0) {
     const { NEXT_PUBLIC_URL, uri, inputText, urlIpfs, resolve, reject } = queue.shift();
     try {
-      const urlStream = await fetch(`${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${inputText}`);
+      const urlStream = await fetch(`${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${encodeURIComponent(inputText)}`);
       const arrayBuffer = await urlStream.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
@@ -40,21 +40,19 @@ export async function POST(req: NextRequest): Promise<Response> {
     const { inputText}=body?.untrustedData
     const url = new URL(req.url)
     const uri = url.searchParams.get("uri") as string
-    let hash:string=""
+  
+    const encodedText = encodeURIComponent(inputText);
     const ipfsUri=`https://salmon-criminal-muskox-571.mypinata.cloud/ipfs/${hash}`
  
     try{
-
-   
       const ipfsPromise = new Promise((resolve, reject) => {
         queue.push({ NEXT_PUBLIC_URL, uri, inputText, urlIpfs, resolve, reject });
       });
-  
       ipfsPromise.then((ipfsHash) => {
-        hash=ipfsHash as string
+          hash=ipfsHash as string
+          console.log(hash,"hash in")
        }).catch((e) => {
       });
-   
   
     }catch(e){
      console.log(e)
@@ -68,12 +66,12 @@ export async function POST(req: NextRequest): Promise<Response> {
 
             <meta property="fc:frame" content="vNext">
             <meta property="fc:frame:image"
-              content=${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${inputText}  
+              content=${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${encodedText}  
 
             >
             <meta name="fc:frame:image:aspect_ratio" content="1.91:1" />
             <meta property="og:image" 
-              content=${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${inputText}  
+              content=${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${encodedText}  
             >
             <meta name="fc:frame:button:1:post_url" content=${NEXT_PUBLIC_URL}/api/prompt />
             <meta name="fc:frame:button:1" content="Regenerate" />
@@ -97,7 +95,6 @@ export async function POST(req: NextRequest): Promise<Response> {
    
 
   }
-
 
 
 

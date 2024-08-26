@@ -12,6 +12,7 @@ import {
     const body: FrameRequest = await req.json(); 
     const url = new URL(req.url,NEXT_PUBLIC_URL )
     const uri = url.searchParams.get("uri") || ""
+    console.log(uri)
 
 
     try{          
