@@ -5,28 +5,32 @@ import {
   } from "@coinbase/onchainkit";
   import { NextRequest, NextResponse } from "next/server";
 
-
+// Prompt Api
   export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
-    return new NextResponse(
+    try{
+      return new NextResponse(
         getFrameHtmlResponse({
-            image: {
+            image:{
               src: `${NEXT_PUBLIC_URL}/background4.jpeg`,  
-              aspectRatio: "1.91:1",
-
+              aspectRatio: "1.91:1"
             },
-            buttons: [
+            buttons:[
               {
-                label:
-                  "Generate",
+                label:"Generate",
               },
 
             ],
-            input: {
-                text: "A cool cow on the beach...",
+            input:{
+              text: "A cool cow on the beach...", // Collect user input
               },
-              postUrl: `${NEXT_PUBLIC_URL}/api/caption`,
+              postUrl: `${NEXT_PUBLIC_URL}/api/caption`, // caption url
           })
-    )
+       )
+      }catch(e){
+        console.log(e)
+        return new NextResponse()
+      }
 
-  }
+
+     }

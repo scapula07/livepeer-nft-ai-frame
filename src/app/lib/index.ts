@@ -4,9 +4,10 @@ import axios, { AxiosResponse } from 'axios';
 export class SDAPI {
     public async txt2img(prompt: string): Promise<GenerationOutput> {
         const url = 'https://dream-gateway.livepeer.cloud/text-to-image';
+        const text= prompt?.length>0?prompt :'Livepeer AI needs your prompt'
         const body:Txt2imgInput = {
             model_id:process.env.MODEL_ID as string,
-            prompt:prompt,
+            prompt:text,
             guidance_scale: 2,
             width: 1024 ,
             height: 512,
@@ -14,10 +15,8 @@ export class SDAPI {
             num_inference_steps: 6,
             num_images_per_prompt: 2,
           };
-
-
         try {
-             const response = await axios.post(url,body, {
+              const response = await axios.post(url,body, {
                 headers: {
                   'Authorization': `Bearer <token>`, 
                   'Content-Type': 'application/json',
@@ -38,10 +37,8 @@ export class SDAPI {
                 };
               } else {
                 throw new Error('Empty data');
-              }
-        
-            
-          }catch(error){
+              }    
+            }catch(error){
                 let errorMessage = 'Unknown error';
                 if (axios.isAxiosError(error) && error.response) {
                 const data = error.response.data;
@@ -49,8 +46,7 @@ export class SDAPI {
                 }
                 throw new Error(`Provider Error: ${errorMessage}`);
         
-          }
+           }
       
-    }
-
-}
+       }
+ }

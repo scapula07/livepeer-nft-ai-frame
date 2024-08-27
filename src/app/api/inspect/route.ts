@@ -59,8 +59,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     }
     try{          
         return new NextResponse(
-          `
-            <!doctype html>
+         `<!doctype html>
 
             <title>Frame 2</title>
 
@@ -79,19 +78,17 @@ export async function POST(req: NextRequest): Promise<Response> {
             <meta name="fc:frame:button:2:action" content="tx" />
             <meta
               name="fc:frame:button:2:target"
-              content=${NEXT_PUBLIC_URL}/api/transaction?uri=${ipfsUri}
+              content=${NEXT_PUBLIC_URL}/api/transaction?uri=${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${encodedText}
            />
            <meta
               property="fc:frame:button:2:post_url"
-              content=${NEXT_PUBLIC_URL}/api/mint?uri=${ipfsUri}
-            />
-      `
-           
-        )     
-     }catch(e){
+              content=${NEXT_PUBLIC_URL}/api/mint?uri=${NEXT_PUBLIC_URL}/api/og?uri=${uri}&text=${encodedText}
+            />`
+         )     
+      }catch(e){
         console.log(e)
-        return new NextResponse()
-     }
+        return new NextResponse(JSON.stringify({ error: 'Internal Server Error' }), {status: 500});
+      }
    
 
   }
