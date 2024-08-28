@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from 'axios';
 export class SDAPI {
     public async txt2img(prompt: string): Promise<GenerationOutput> {
         const url = 'https://dream-gateway.livepeer.cloud/text-to-image';
-        const text= prompt?.length>0?prompt :'Livepeer AI needs your prompt'
+        const text= prompt?.length>0?prompt :'Livepeer AI'
         const body:Txt2imgInput = {
             model_id:process.env.MODEL_ID as string,
             prompt:text,

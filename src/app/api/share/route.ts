@@ -14,6 +14,7 @@ import {
         const uri = url.searchParams.get("uri") as string
         const text = url.searchParams.get("text") as string
         const encodedText = encodeURIComponent(text);
+       
     
      try{          
         return new NextResponse(
@@ -26,12 +27,12 @@ import {
                 {
                   label:"X.com",
                   action:'link',
-                  target:`https://twitter.com/intent/tweet?url=${uri}`
+                  target:`https://twitter.com/intent/tweet?url=${uri}&text=${encodedText}`
                 },
                 {
                   label:"Recast",
                   action:'link',
-                  target:`https://warpcast.com/~/compose?embeds[]=${uri}`
+                  target:`https://warpcast.com/~/compose?embeds[]=${uri}&text=${encodedText}`
                 },
               ],
             })
