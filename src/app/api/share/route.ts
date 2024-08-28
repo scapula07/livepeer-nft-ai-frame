@@ -30,7 +30,7 @@ import {
                   target:`https://twitter.com/intent/tweet?url=${imgUrl}`
                 },
                 {
-                  label:"Recast",
+                  label:"Cast",
                   action:'link',
                   target:`https://warpcast.com/~/compose?embeds[]=${imgUrl}`
                 },
