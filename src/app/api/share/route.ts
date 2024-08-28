@@ -15,7 +15,7 @@ import {
         const text = url.searchParams.get("text") as string
         const encodedText = encodeURIComponent(text);
        
-    
+       const imgUrl=`${uri}&text=${encodedText}`
      try{          
         return new NextResponse(
             getFrameHtmlResponse({
@@ -27,12 +27,12 @@ import {
                 {
                   label:"X.com",
                   action:'link',
-                  target:`https://twitter.com/intent/tweet?url=${uri}&text=${encodedText}`
+                  target:`https://twitter.com/intent/tweet?url=${imgUrl}`
                 },
                 {
                   label:"Recast",
                   action:'link',
-                  target:`https://warpcast.com/~/compose?embeds[]=${uri}&text=${encodedText}`
+                  target:`https://warpcast.com/~/compose?embeds[]=${imgUrl}`
                 },
               ],
             })
