@@ -11,13 +11,15 @@ import {
         const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
         const body: FrameRequest = await req.json(); 
         const url = new URL(req.url,NEXT_PUBLIC_URL )
-        const uri = url.searchParams.get("uri") || ""
-        console.log(uri)
+        const uri = url.searchParams.get("uri") as string
+        const text = url.searchParams.get("text") as string
+        const encodedText = encodeURIComponent(text);
+    
      try{          
         return new NextResponse(
             getFrameHtmlResponse({
                 image:{
-                  src:uri,
+                  src:`${uri}&text=${encodedText}`,
                   aspectRatio: "1.91:1",
                 },
                 buttons:[
@@ -27,9 +29,9 @@ import {
                   target:`https://twitter.com/intent/tweet?url=${uri}`
                 },
                 {
-                    label:"Recast",
-                    action:'link',
-                    target:`https://warpcast.com/~/compose?embeds[]=${uri}`
+                  label:"Recast",
+                  action:'link',
+                  target:`https://warpcast.com/~/compose?embeds[]=${uri}`
                 },
               ],
             })
