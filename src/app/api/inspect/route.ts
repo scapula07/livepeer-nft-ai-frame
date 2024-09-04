@@ -1,8 +1,6 @@
 import {FrameRequest} from "@coinbase/onchainkit";
 import { NextRequest, NextResponse } from "next/server";
-import { Buffer } from 'buffer';
-import FormData from 'form-data';
-import axios from "axios";
+
 
 export async function POST(req: NextRequest): Promise<Response> {
     const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
@@ -50,7 +48,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       }
    
 
-  }
+}
 
 
 

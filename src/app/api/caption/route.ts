@@ -1,8 +1,4 @@
-import {
-    FrameRequest,
-    getFrameMessage,
-    getFrameHtmlResponse,
-  } from "@coinbase/onchainkit";
+import { FrameRequest, getFrameHtmlResponse} from "@coinbase/onchainkit";
 import { NextRequest, NextResponse } from "next/server";
 import { SDAPI } from "@/app/lib";
 
@@ -42,4 +38,4 @@ export async function POST(req: NextRequest): Promise<Response> {
         }catch(e){
           return new NextResponse(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
        }
-      }
+}

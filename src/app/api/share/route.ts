@@ -1,12 +1,7 @@
-import {
-    FrameRequest,
-    getFrameMessage,
-    getFrameHtmlResponse,
-  } from "@coinbase/onchainkit";
-  import { NextRequest, NextResponse } from "next/server";
+import { FrameRequest,getFrameHtmlResponse} from "@coinbase/onchainkit";
+import { NextRequest, NextResponse } from "next/server";
 
-
-
+// share api
   export async function POST(req: NextRequest): Promise<Response> {
         const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL;
         const body: FrameRequest = await req.json(); 
@@ -15,7 +10,7 @@ import {
         const text = url.searchParams.get("text") as string
         const encodedText = encodeURIComponent(text);
        
-       const imgUrl=`${uri}&text=${encodedText}`
+        const imgUrl=`${uri}&text=${encodedText}`
      try{          
         return new NextResponse(
             getFrameHtmlResponse({

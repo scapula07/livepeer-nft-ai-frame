@@ -30,6 +30,5 @@ export async function POST(req: NextRequest): Promise<Response> {
           console.log(e)
           return new NextResponse(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });   
         }
-        
-  }
+ }
   
